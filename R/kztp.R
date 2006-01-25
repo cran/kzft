@@ -1,4 +1,4 @@
-kz3p<-function(x,m,k,p=1,n=1,rp1=0,rp2=0.5,cp1=0,cp2=0.5){
+kztp<-function(x,m,k,p=1,n=1,rp1=0,rp2=0.5,cp1=0,cp2=0.5){
     data<-as.vector(x)
     if (((m-1)*k+1)>length(data))
         stop("invalid 'm' & 'k':(m-1)k+1 should be less equal length of data")
@@ -29,18 +29,18 @@ kz3p<-function(x,m,k,p=1,n=1,rp1=0,rp2=0.5,cp1=0,cp2=0.5){
     delta.rm<-rm2-rm1+1
     delta.cm<-cm2-cm1+1
 
-    kz3p<-array(NA,dim=c(delta.rm,delta.cm,T))
+    kztp<-array(NA,dim=c(delta.rm,delta.cm,T))
     for ( i in (1:delta.rm) ) for ( j in (1:delta.cm) ){
-         kz3p[i,j,]<-kzft[,i+rm1-1]*kzft[,j+cm1-1]*Conj(kzft[,i+j+rm1+cm1-2])*M^2
+         kztp[i,j,]<-kzft[,i+rm1-1]*kzft[,j+cm1-1]*Conj(kzft[,i+j+rm1+cm1-2])*M^2
     }               
         
-    kz3p<-rowMeans(kz3p,dim=2)
+    kztp<-rowMeans(kztp,dim=2)
 
-    lst<-list(bispectrum=kz3p, modulus=Mod(kz3p), argument=Arg(kz3p))
+    lst<-list(bispectrum=kztp, modulus=Mod(kztp), argument=Arg(kztp))
     return(lst)
 }
 
-variation.kz3p<-function(pg, K=dim(pg)[1]){
+variation.kztp<-function(pg, K=dim(pg)[1]){
     N<-dim(pg)[1]
     sq<-array(0,dim=c(N,N,K))
 
@@ -62,12 +62,12 @@ variation.kz3p<-function(pg, K=dim(pg)[1]){
     return(lst)
 }
 
-smooth.kz3p<-function(pg,c,K=dim(pg)[1]) {
+smooth.kztp<-function(pg,c,K=dim(pg)[1]) {
     N<-dim(pg)[1]
     spg<-array(0,dim=c(N,N))
     m<-array(0,dim=c(N,N))
 
-    sq<-variation.kz3p(pg,K)
+    sq<-variation.kztp(pg,K)
 
     cc<-c*sq$total
 

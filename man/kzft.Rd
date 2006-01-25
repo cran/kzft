@@ -32,7 +32,7 @@ transfun.kzft(m,k,lamda=seq(-0.5,0.5,by=0.01),omega=0)
 
 \seealso{
   \code{\link{kzp}},
-  \code{\link{kz3p}}.
+  \code{\link{kztp}}.
 }
 
 \examples{
@@ -43,7 +43,8 @@ transfun.kzft(m,k,lamda=seq(-0.5,0.5,by=0.01),omega=0)
 aa<-coeff.kzft(201,5);
 tt<-seq(1:1001)-501;
 zz<-cos(2*pi*0.025*tt);
-plot(zz*aa,type="l",xlab="time units", ylab="envelope coefficient", main="coefficient of the kzft");
+plot(zz*aa,type="l",xlab="time units", ylab="envelope coefficient", 
+    main="coefficient of the kzft");
 lines(aa);
 lines(-1*aa);
 
@@ -53,7 +54,8 @@ lines(-1*aa);
 lamda<-seq(-0.1,0.1,by=0.001)
 tf1<-transfun.kzft(201,1,lamda,0.025)
 tf2<-transfun.kzft(201,5,lamda,0.025)
-matplot(lamda,cbind(log(tf1),log(tf2)),type="l",ylim=c(-15,0),ylab="", main="transfer function of the kzft")
+matplot(lamda,cbind(log(tf1),log(tf2)),type="l",ylim=c(-15,0),ylab="", 
+        main="transfer function of the kzft")
 
 #example 3
 
