@@ -32,7 +32,8 @@ transfun.kzft(m,k,lamda=seq(-0.5,0.5,by=0.01),omega=0)
 
 \seealso{
   \code{\link{kzp}},
-  \code{\link{kztp}}.
+  \code{\link{kztp}},
+  \code{\link{kzw}}.
 }
 
 \examples{

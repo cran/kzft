@@ -48,7 +48,8 @@ smooth.kztp(pg,c,K=dim(pg)[1])
 
 \seealso{
   \code{\link{kzft}},
-  \code{\link{kzp}}.
+  \code{\link{kzp}},
+  \code{\link{kzw}}.
 }
 
 \examples{
@@ -77,7 +78,7 @@ filled.contour(omega,omega,pg3.y,xlab="Frequency",ylab="Frequency",
 filled.contour(omega,omega,spg3.y,xlab="Frequency",ylab="Frequency",
                main="Smoothed 3rd-order Periodogram3")
 
-#example 3
+#example 2
 #effect of KZFT
 
 t<-1:50000

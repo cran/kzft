@@ -47,7 +47,8 @@ smooth.kzp(pg,c,K=length(pg),method = "DZ")
 
 \seealso{
   \code{\link{kzft}},
-  \code{\link{kztp}}.
+  \code{\link{kztp}},
+  \code{\link{kzw}}.
 }
 
 \examples{

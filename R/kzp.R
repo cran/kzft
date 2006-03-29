@@ -13,6 +13,7 @@ kzp<-function(x,m,k,p=1,n=1){
     kzft<-array(NA,dim=c(T,n*m))
     pg<-array(NA,dim=c(T,n*m))
 
+
     omega<-2*pi*seq(0,1,length=n*m+1)[-1]
 
     s<-0:(M-1);
@@ -25,7 +26,9 @@ kzp<-function(x,m,k,p=1,n=1){
     }
 
     kzp<-colMeans(pg)
-    kzp<-kzp[1: round(n*m/2)]
+
+    kzp<-kzp[1:round(n*m/2)]
+
     return(kzp)
 }
 

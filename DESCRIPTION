@@ -1,6 +1,6 @@
 Package: kzft
-Version: 0.11
-Date: 2006/01/25
+Version: 0.15
+Date: 2006/03/29
 Title: Kolmogorov-Zurbenko Fourier transform and application
 Author: Wei Yang <peterwyang@gmail.com> and Igor Zurbenko
         <IZurbenko@albany.edu>
@@ -10,4 +10,4 @@ Suggests: graphics
 Description: A colletion of functions to implement Kolmogorov-Zurbenko 
              Fourier transform based periodograms and smoothing methods
 License: GPL Version 2 or later
-Packaged: Wed Jan 25 13:59:14 2006; wyang
+Packaged: Wed Mar 29 20:02:16 2006; wyang
