@@ -67,10 +67,10 @@ x<-cos(2*pi*(10/1000)*t)
 kzft.x1<-kzft(x,200,1,0.005)
 x1<-2*Re(kzft.x1$tf[,2])
 
-kzft.x2<-kzft(x,200,2,0.005)
+kzft.x2<-kzft(x,200,2,0.005/2)
 x2<-2*Re(kzft.x2$tf[,2])
 
-kzft.x3<-kzft(x,200,3,0.005)
+kzft.x3<-kzft(x,200,3,0.005/3)
 x3<-2*Re(kzft.x3$tf[,2])
 
 par(mfrow=c(2,2))
@@ -88,10 +88,10 @@ x<-sin(2*pi*(10/1000)*t)
 kzft.x1<-kzft(x,200,1,0.005)
 x1<-2*Re(kzft.x1$tf[,2])
 
-kzft.x2<-kzft(x,200,2,0.005)
+kzft.x2<-kzft(x,200,2,0.005/2)
 x2<-2*Re(kzft.x2$tf[,2])
 
-kzft.x3<-kzft(x,200,3,0.005)
+kzft.x3<-kzft(x,200,3,0.005/3)
 x3<-2*Re(kzft.x3$tf[,2])
 
 par(mfrow=c(2,2))
