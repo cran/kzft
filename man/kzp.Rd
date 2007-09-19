@@ -4,15 +4,15 @@
 \alias{variation.kzp}
 \alias{smooth.kzp}
 
-\title{Kolmogorov-Zurbenko periodogram and smoothing methods}
+\title{Kolmogorov-Zurbenko Periodogram and Smoothing Methods}
 
 \description{
-  Kolmogorov-Zurbenko periodogram and smoothing using either DZ or NZ method.
+  Kolmogorov-Zurbenko periodogram and smoothing using either DiRienzo-Zurbenko (DZ) or Neagu-Zurbenko (NZ) smoothing methods.
 }
 
 \details{
   Kolmogorov-Zurbenko periodogram is calculated based on the Kolmogorov-Zurbenko Fourier transform.
-  Both DiRienzo-Zurbenko smoothing and Neagu-Zurbenko smoothing methods are adaptive which allow the bandwidth of the spectral window in the smoothed periodogram vary according to the smoothness of the underlying spectral density. In DiRienzo-Zurbenko method, the bandwith is extended until the squared variation of the periodogram within the window reaches a prespecified percentage of total variation. In Neagu-Zurbenko method, the bandwith is extended until the measure of nonlinearity of the periodogram within the window reaches a prespecified percentage of the total measure of nonlinearity.
+  Both DZ and NZ smoothing methods are adaptive which allow the bandwidth of the spectral window vary according to the smoothness of the underlying spectral density. In DZ algorithm, the squared variation of the periodogram is used to evaulate the smoothness of the spectrum.  When smoothing the periodogram, the bandwith of the spectral window is extended until the squared variation within the window reaches a prespecified percentage of total variation of the periodogram. In NZ algorithm, the only difference is to use a measure of nonlinearity to evaluate the smoothness of the spectrum.  In the situation when the variation is very small at certain frequencies, the bandwidth of the spectral window could be extended very large in order to achieve the prespecified percentage of the total variation.  However, this little improvement of the smoothness of the spectrum will cause a considerably increased amount of computation labor.  In the algorithms, we set a limit of the maximum bandwidth being allowed to avoid this situation.  For details, please refer to DiRienzo and Zurbenko (1998) and Neagu and Zurbenko (2003).  
 }
 
 \usage{
@@ -23,13 +23,13 @@ smooth.kzp(pg,c,K=length(pg),method = "DZ")
 }
 
 \arguments{
-  \item{x}{A vector of the time series}
-  \item{m}{Length of the window size of the KZFT}
-  \item{k}{Number of iterations of the KZFT}
-  \item{p}{Percentage of overlap between two intervals}
-  \item{n}{Multiple frequency rate of Fourier frequencies}
-  \item{pg}{The periodogram of the time series}
-  \item{K}{Half of the maximum bandwidth of the spectral window}
+  \item{x}{The raw time series}
+  \item{m}{The length of the window size for a regular Fourier transform}
+  \item{k}{The number of iterations for the KZFT}
+  \item{p}{The distance between two successive intervals as a percentage of the total length of the time series}
+  \item{n}{The sampling frequency rate as a multiplication of the Fourier frequencies}
+  \item{pg}{The raw periodogram of a time series}
+  \item{K}{Half length of the maximum bandwidth of the spectral window being allowed in the algorithms}
   \item{c}{A prespecified percentage of total nonlinearity/variation}
   \item{method}{Smooth methods: DZ or NZ}
 }
@@ -78,9 +78,9 @@ spg.x2<-smooth.kzp(kzp.x,0.03, method="NZ")$periodogram
 omega<-seq(0,1,length=481)[2:241]
 
 par(mfrow=c(2,2))
-plot(omega,kzp.x,main="Periodogram",type="l")
-plot(omega,spg.x1,main="Smoothed Periodogram using DZ method",type="l")
-plot(omega,spg.x2,main="Smoothed Periodogram using NZ method",type="l")
+plot(omega,kzp.x,main="Raw periodogram",type="l", xlab="Frequency (cycles/time unit)", ylab=" ")
+plot(omega,spg.x1,main="Smoothed Periodogram using DZ method",type="l", xlab="Frequency (cycles/time unit)", ylab=" ")
+plot(omega,spg.x2,main="Smoothed Periodogram using NZ method",type="l", xlab="Frequency (cycles/time unit)", ylab=" ")
 
 #example 2
 #show the effect of KZFT
@@ -94,10 +94,10 @@ spg.y2<-smooth.kzp(kzp.y2,0.01, method="NZ")$periodogram
 
 omega<-seq(0,1,length=1001)[21:61]
 par(mfrow=c(2,2))
-plot(omega,kzp.y1[20:60], main="Periodogram m=1000, k=1", type="l")
-plot(omega,kzp.y2[20:60], main="Periodogram m=500, k=2", type="l")
-plot(omega,spg.y1[20:60], main="Smoothed Periodogram m=1000, k=1", type="l")
-plot(omega,spg.y2[20:60], main="Smoothed Periodogram m=500, k=2", type="l")
+plot(omega,kzp.y1[20:60], main="Periodogram m=1000, k=1", type="l", xlab="Frequency (cycles/time unit)", ylab=" ")
+plot(omega,kzp.y2[20:60], main="Periodogram m=500, k=2", type="l", xlab="Frequency (cycles/time unit)", ylab=" ")
+plot(omega,spg.y1[20:60], main="Smoothed Periodogram m=1000, k=1", type="l", xlab="Frequency (cycles/time unit)", ylab=" ")
+plot(omega,spg.y2[20:60], main="Smoothed Periodogram m=500, k=2", type="l", xlab="Frequency (cycles/time unit)", ylab=" ")
 
 }
 \keyword{ts}
